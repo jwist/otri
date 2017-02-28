@@ -1,0 +1,45 @@
+<div class="container-fluid" ng-controller="TechnologiesController as controller">
+    <div>
+        <ul class="nav nav-tabs">
+            <li ng-class="[{active: controller.visualizeAs == 'graph'}]" ng-click="controller.visualizeChange('graph')" ><a>Ver como Force directed graph</a></li>
+            <li ng-class="[{active: controller.visualizeAs == 'map'}]" ng-click="controller.visualizeChange('map')" ><a>Ver como Mapa Conceptual</a></li>
+            <li ng-class="[{active: controller.visualizeAs == 'table'}]" ng-click="controller.visualizeChange('table')"><a>Ver como Tabla</a></li>
+        </ul>
+    </div>
+    <div ng-show="controller.visualizeAs == 'graph'">
+        <div class="row">
+            <div class="col-md-9 col-xs-12">
+                <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+            </div>
+            <div style="z-index: 1000;" class="col-md-3 col-xs-12">
+                <h3>{{controller.detail.name}}</h3>
+                <p>{{controller.detail.description}}</p></div>
+                <md-button ng-show="controller.detail.$id != null" ng-click="controller.showDetail(controller.detail)" md-no-ink class="md-primary pull-right">Ver detalle </md-button>
+        </div>
+        
+    </div>
+    <div ng-show="controller.visualizeAs == 'map'">
+        <img src="img/mapa_conceptual.svg" style="width: auto; max-width=960px;" usemap="#mapaconceptual"/>
+        <map name="mapaconceptual">
+            <area shape="rect" coords="20,20,220,250" ng-click="controller.showTechnologiesList('Energía y combustibles')" title="Energia y combustibles">
+            <area shape="rect" coords="220,20,440,250" ng-click="controller.showTechnologiesList('TICs')" title="TIC's">
+            <area shape="rect" coords="440,20,660,250" ng-click="controller.showTechnologiesList('Pulpa y papel')" title="Pulpa y papel">
+            <area shape="rect" coords="660,20,880,250" ng-click="controller.showTechnologiesList('Construcción y materiales')" title="Construcción y materiales">
+            <area shape="rect" coords="20,270,220,470" ng-click="controller.showTechnologiesList('Maquinaria y procesos industriales')" title="Maquinaria y procesos industriales">
+            <area shape="rect" coords="200,270,440,470" ng-click="controller.showTechnologiesList('Tecnologías ambientales')" title="Tecnologías ambientales">
+            <area shape="rect" coords="400,270,660,470" ng-click="controller.showTechnologiesList('Salud y bienestar humano')" title="Salud y bienestar humano">
+            <area shape="rect" coords="600,270,880,470" ng-click="controller.showTechnologiesList('Agroindustria y alimentación')" title="Agroindustria y alimentación">
+        </map>
+    </div>
+    <div ng-show="controller.visualizeAs == 'table'">
+        <md-list flex>
+            <md-list-item class="md-3-line"  ng-repeat="technology in controller.technologiesArray" ng-click="controller.showDetail(technology)">
+              <div class="md-list-item-text" layout="column">
+                  <h4>{{technology.OTRI_name}}</h4>
+                  <p>{{technology.name}}</p>
+                  <md-button class="md-secondary md-icon-button" ng-repeat="document in patent.documents" ng-click="controller.showPDF(document)"><md-icon md-svg-icon="img/file-pdf.svg"></md-icon></md-button>
+              </div>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>

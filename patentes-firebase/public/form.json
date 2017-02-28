@@ -1,0 +1,131 @@
+{
+	"name": "Formulario Patentes",
+	"questions": [{
+        "name": "nro_radicacion",
+		"tag": "No. Radicacion",
+		"type": "text",
+		"required": "true"
+	}, {
+        "name": "description",
+		"tag": "Descripcion",
+		"type": "text",
+		"required": "true"
+	}, {
+        "name": "principal_researcher",
+		"tag": "Investigador principal",
+		"type": "text",
+		"required": "true"
+	}, {
+        "name": "inventor",
+		"tag": "Inventores",
+		"type": "text",
+		"required": "true"
+	}, {
+        "name": "facultad_programa",
+		"tag": "Facultad/programa",
+		"type": "text",
+		"required": "true"
+	}, {
+        "name": "research_group",
+		"tag": "Grupo investigacion",
+		"type": "text",
+		"required": "true"
+	}, {
+        "name": "contact_information",
+		"tag": "Informacion Contacto",
+		"type": "text",
+		"required": "true"
+	}, {
+        "name": "development_level",
+		"tag": "Nivel de desarrollo",
+		"type": "select",
+		"required": "true",
+        "options": ["1","2","3","4","5","6","7","8","9","10"]
+	}, {
+        "name": "otri_assignation",
+		"tag": "Asignacion OTRI",
+		"type": "text",
+		"required": "true"
+	}, {
+        "name": "evaluation_score",
+		"tag": "Evaluacion Felipe Figueroa",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "information_center",
+		"tag": "Centro de informacion",
+		"type": "select",
+		"required": "false",
+        "options": ["9800","9801","9802","9803","9804","9805"]
+	}, {
+        "name": "announcement",
+		"tag": "Convocatoria",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "announcement_line",
+		"tag": "Linea convocatoria",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "show_year",
+		"tag": "Año de presentacion",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "colciencias_financed_amount",
+		"tag": "Valor financiado por Colciencias",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "lawyer",
+		"tag": "Abogado responsable",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "procedure_type",
+		"tag": "Tipo tramite (No. aplicacion)",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "request_country",
+		"tag": "Pais de solicitud",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "request_date",
+		"tag": "Fecha solicitud",
+		"type": "date",
+		"required": "false"
+	}, {
+        "name": "request_number",
+		"tag": "Numero solicitud",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "patent_number",
+		"tag": "Numero certificado de patente",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "allowance_date",
+		"tag": "Fecha de concesion",
+		"type": "date",
+		"required": "false"
+	}, {
+        "name": "allowance_country",
+		"tag": "Pais de concesion",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "publishing_number",
+		"tag": "Numero de publicacion por pais",
+		"type": "text",
+		"required": "false"
+	}, {
+        "name": "observations",
+		"tag": "Observaciones",
+		"type": "text",
+		"required": "false"
+	}]
+}

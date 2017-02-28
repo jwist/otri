@@ -1,0 +1,21 @@
+<div class="container-fluid" ng-controller="PatentsController as controller">
+    <div>
+        <ul class="nav nav-tabs">
+            <li ng-class="[{active: controller.visualizeAs == 'map'}]" ng-click="controller.visualizeChange('map')" ><a>Ver como Mapa</a></li>
+            <li ng-class="[{active: controller.visualizeAs == 'table'}]" ng-click="controller.visualizeChange('table')"><a>Ver como Tabla</a></li>
+        </ul>
+    </div>
+    <div ng-show="controller.visualizeMap">
+        <datamap map="mapObject" on-click="updateActiveGeography" ></datamap>
+    </div>
+    <div ng-show="controller.visualizeTable">
+        <md-list flex>
+            <md-list-item class="md-3-line"  ng-repeat="patent in controller.patentsArray" ng-click="controller.showPatent(patent)">
+              <div class="md-list-item-text" layout="column">
+                  <p>{{patent.description}}</p>
+                  <md-button class="md-secondary md-icon-button" ng-repeat="document in patent.documents" ng-click="controller.showPDF(document)"><md-icon md-svg-icon="img/file-pdf{{document.fileCategory}}.svg"></md-icon></md-button>
+              </div>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>

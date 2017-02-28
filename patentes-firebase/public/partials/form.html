@@ -1,0 +1,49 @@
+<div class="container-fluid" ng-controller="FormController as controller" style="height: 100%">
+    <div id="message">
+        <h4>{{controller.form.name}}</h4>
+        <div class="form-group" ng-repeat="question in controller.form.questions">
+            <div ng-switch on="question.type">
+                <div ng-switch-when="text">
+                    <label>{{question.tag}}</label>
+                    <input ng-model="controller.answers[question.name]" class="form-control" type="text" placeholder="{{question.tag}}">
+                </div>
+                <div ng-switch-when="select">
+                    <label>{{question.tag}}</label>
+                    <select ng-model="controller.answers[question.name]" class="form-control">
+                        <option ng-repeat="option in question.options" >{{option}}</option>
+                    </select>
+                </div>
+                <div ng-switch-when="date">
+                    <label>{{question.tag}}</label>
+                    <md-datepicker ng-model="controller.answers[question.name]" md-placeholder="Enter date"></md-datepicker>
+                </div>
+                <div ng-switch-when="reference">
+                    <label>{{question.tag}}</label>
+                    <select ng-model="controller.answers[question.name]" class="form-control">
+                        <option ng-repeat="pair in controller.references[question.reference]" value="{{pair.key}}" >{{pair.values}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label>Documentos</label>
+            <div ng-repeat="document in controller.answers.documents">
+                <a href="{{document.url}}">{{document.name}}</a>
+            </div>
+            <form ng-submit="controller.uploadFile()">
+                <select ng-model="controller.fileCategory" class="form-control">
+                    <option value="brochure">Brochure</option>
+                    <option value="other">Otro</option>
+                </select>
+                <input type="file" name="file" class="inputimg" id="document">
+                <br />
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-block">Adjuntar documento</button>
+                </span>
+            </form>
+        </div>
+        <!--div><md-button ng-click="controller.sendEmail()" class="md-raised md-primary">EnviarEmail</md-button></div-->
+        <div><md-button ng-click="controller.save()" class="md-raised md-primary">Guardar</md-button></div>
+        <div id="data"></div>
+    </div>
+</div>

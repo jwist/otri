@@ -1,0 +1,22 @@
+<div class="container-fluid" ng-controller="DetailController as controller" >
+    <br/>
+    <h3>Informacion del {{controller.form.name}} </h3>
+    <div class="pull-right">
+        <md-button class="md-raised md-primary" ng-click="controller.exportPDF()" >Exportar Tecnología</md-button>
+        <md-button class="md-raised md-primary" ng-show="controller.isLoggedin" ng-click="controller.showEditForm()" >Editar</md-button>
+        <md-button class="md-raised md-warn" ng-show="controller.isLoggedin" ng-click="controller.delete()" >Delete</md-button>
+    </div>
+    <div ng-repeat="question in controller.form.questions">
+        <label style="color: #777;">{{question.tag}}</label>
+        <br />
+        <span style="font-size: 14pt">{{controller.object[question.name]}}</span>
+    </div>
+    <div>
+        <label style="color: #777;">Archivos</label><br/>
+        <div ng-repeat="document in controller.object.documents">
+            <a href="{{document.url}}" target="_blank">{{document.name}}</a>
+        </div>
+    </div> 
+    <br/>
+    <br/>
+</div>
